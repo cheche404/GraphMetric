@@ -1,4 +1,4 @@
-let result = data.series[0].fields[0].values.buffer[0];
+let result = context.panel.data.series[0].fields[0].values.buffer[0];
 let nodes = result.nodes;
 let links = result.relationships;
 let categories = result.categories;
@@ -333,7 +333,7 @@ function initNodeStyle() {
                         let keyStr = KEY_FORMATTER[props[i]] ? KEY_FORMATTER[props[i]] : props[i];
                         let valStyle = VAL_FORMATTER[props[i]] ? VAL_FORMATTER[props[i]] : "";
                         let valStr = params.data.props[props[i]] instanceof Object ? JSON.stringify(params.data.props[props[i]]) : params.data.props[props[i]];
-                        str1 += ("<label style='min-width:200px;text-align:right;font-weight:bold;vertical-align:top;'>" + keyStr + ":&nbsp;&nbsp;</label><label style='" + valStyle + ";min-width:300px;max-width:800px;text-align:left;word-wrap:break-word;white-space:pre-line;'>" + valStr + "</label><br/>");
+                        str1 += ("<label style='min-width:200px;text-align:right;font-weight:bold;vertical-align:top;'><a href='https://www.baidu.com' target='_blank' style='color:#0066cc;text-decoration:none;'>" + keyStr + "</a>:&nbsp;&nbsp;</label><label style='" + valStyle + ";min-width:300px;max-width:800px;text-align:left;word-wrap:break-word;white-space:pre-line;'>" + valStr + "</label><br/>");
                     }
                 }
 
@@ -691,7 +691,7 @@ function initLinkStyle() {
         item.tooltip =
             {
                 borderWidth: 3,
-                position: { right: 10, top: 10 },
+                position: {right: 10, top: 10},
                 formatter: function (params) {
                     let props = [];
                     if (LINK_PROPS) {
@@ -823,7 +823,7 @@ let options = {
         }),
         orient: 'vertical',
         left: 0,
-        textStyle: { color: 'white' }
+        textStyle: {color: 'white'}
     }],
     series: [{
         type: 'graph',
@@ -875,8 +875,8 @@ for (let i = 0; i < rippleNodesConfig.length; i++) {
 var eventFlag = 1;
 
 function initEvent() {
-    echartsInstance.off('mouseover');
-    echartsInstance.on('mouseover', function (params) {
+    context.panel.chart.off('mouseover');
+    context.panel.chart.on('mouseover', function (params) {
         if (params.componentSubType != "graph") {
             return false;
         }
@@ -944,12 +944,12 @@ function initEvent() {
             }
         }
         //重新渲染
-        echartsInstance.setOption(options, false, false);
+        context.panel.chart.setOption(options, false, false);
     });
 
 
-    echartsInstance.off('mouseout');
-    echartsInstance.on('mouseout', function (params) {
+    context.panel.chart.off('mouseout');
+    context.panel.chart.on('mouseout', function (params) {
         if (params.componentSubType != "graph") {
             return false;
         }
@@ -991,7 +991,7 @@ function initEvent() {
         }
 
         //重新渲染
-        echartsInstance.setOption(options, false, false);
+        context.panel.chart.setOption(options, false, false);
     });
 
     eventFlag = 1;

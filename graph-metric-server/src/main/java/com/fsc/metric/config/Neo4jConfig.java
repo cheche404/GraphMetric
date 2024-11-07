@@ -28,16 +28,16 @@ import java.util.List;
         transactionManagerRef = "neo4jTransactionManager")
 @EntityScan(basePackages = "com.fsc.metric.dao")
 @EnableTransactionManagement
-@ConditionalOnExpression("'${graph.metric.neo4j.on}'.equals('true')")
+//@ConditionalOnExpression("'${graph.metric.neo4j.on}'.equals('true')")
 public class Neo4jConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(Neo4jConfig.class);
 
     @Bean
     public org.neo4j.ogm.config.Configuration getConfiguration() {
-        String uri = ConfigTools3.getString("graph.metric.neo4j.uri","bolt://149.56.24.80:7687");
+        String uri = ConfigTools3.getString("graph.metric.neo4j.uri","bolt://172.31.0.7:7687");
         String userName = ConfigTools3.getString("graph.metric.neo4j.username","neo4j");
-        String password = ConfigTools3.getString("graph.metric.neo4j.password","B7Nw8zIiAFlI2Gv");
+        String password = ConfigTools3.getString("graph.metric.neo4j.password","cheche0058!");
 
         LOG.info("Connect neo4j:{}:{}:{}", uri, userName, password);
         return new org.neo4j.ogm.config.Configuration.Builder().uri(uri).connectionPoolSize(100)
