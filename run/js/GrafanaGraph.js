@@ -53,12 +53,11 @@ let AREA_REST_PADDING_RATE_WIDTH_MUTI_COL = 0.125;
 
 let LINK_EFFECT_SIZE = 5;
 let LINK_SIZE_FACTOR = params.extraParams.linkSizeFactor ? params.extraParams.linkSizeFactor : 40;
-let MIN_NODE_SIZE = 20;
+let MIN_NODE_SIZE = 30;
 let STANDARD_NODE_SIZE = 60;
 let MUTI_COL_THRESHOLD = (HORIZONTAL_LAYOUT ? HEIGHT_USED * 0.8 / STANDARD_NODE_SIZE : WIDTH_USED * 0.8 / STANDARD_NODE_SIZE) * 2;
 
-let COLOR_SET = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'];
-
+let COLOR_SET = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc', '#c23531', '#2f4554', '#61a0a8', '#d48265', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
 let nodeMap = {};
 let rippleNodes = [];
 let rippleNodesConfig = [];
